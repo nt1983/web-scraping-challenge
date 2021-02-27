@@ -1,5 +1,3 @@
-from flask import Flask, render_template, redirect
-from flask_pymongo import pymongo
 from bs4 import BeautifulSoup as bs
 import pandas as pd
 from splinter import Browser
@@ -65,6 +63,10 @@ def scrape():
     }
     browser.quit()
     return mars_dict
+
+
+
+
 
 
 
