@@ -15,6 +15,7 @@
     <div class="jumbotron text-center">
       <!-- Render our data -->
       <h1 class="font-weight-bold">Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-md" href="../scrape" role="button">Scrape New Data</a></p>
     </div>
 
 </br>
@@ -43,24 +44,24 @@
 <hr>
 <div class="row">
   <div class="col-md-8 offset-4">
-    <h2 class="align-items-center"><u>Mars hemispheres</u></h2>  
+    <h2 class="align-items-center"><u>Mars Hemispheres</u></h2>  
   </div>
 </div>
 </br>
-<div class="row"> 
-  <div class="col-6 border">  
-    <div class="card"> 
-      <div class="card-body">  
-        <div>
-        {% for hem in mars.hemisphere_image_urls %} 
-          
-          <h3> {{hem.image_title}} </h3>  
-          <img width="500 px" height="500 px" src="{{hem.image_url}}">
-               
-        {% endfor %}
-       </div>
-        </div>
-</div>
+<div class="row">       
+  {% for hemisphere in mars.hemisphere_image_urls  %} 
+    <div class="col-6 border">
+    </br>
+          <div>
+            <img width="512 px" height="512 px" src="{{ hemisphere.image_url | safe }}">
+          </div>
+
+          <div>
+            <h4> {{ hemisphere.image_title | safe }} </h4>  
+          </div>
+  
+    </div>
+  {% endfor %}
 </div> 
 
 <hr>
