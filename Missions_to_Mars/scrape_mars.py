@@ -33,7 +33,9 @@ def scrape():
     # Navigate to space fact website, save data in table formtat as html
     Fact_url="https://space-facts.com/mars/"
     tables=pd.read_html(Fact_url)
-    html_table=tables[0].to_html()
+    h_table=tables[0]
+    h_table.columns=["Description", "Mars"]
+    html_table=h_table.to_html()
 
     # Scrape Mars hemisphere title and image
     image_website="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
