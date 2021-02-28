@@ -28,12 +28,12 @@ def scrape():
     soup=bs(html,'html.parser')
     # find features image in JPL mars page
     featured_image_url=soup.find('img', class_='headerimage fade-in')['src']
-    featured_image_url='https://data-class-jpl-space.s3.amazonaws.com/JPL_Space'+featured_image_url
+    featured_image_url='https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/'+featured_image_url
 
     # Navigate to space fact website, save data in table formtat as html
     Fact_url="https://space-facts.com/mars/"
     tables=pd.read_html(Fact_url)
-    html_tbale=tables[0].to_html()
+    html_table=tables[0].to_html()
 
     # Scrape Mars hemisphere title and image
     image_website="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
@@ -50,16 +50,16 @@ def scrape():
         browser.visit(image_page_url)
         page=browser.html
         img_soup=bs(page, 'html.parser')
-        download=img_soup.find_all('div', class_='downloads')
-        image_url=download[0].find_all('a')[1]['href']
-        url_dict={'Title':image_title, 'Image URL':image_url}
+        download=img_soup.find_all('img', class_='wide-image')
+        image_url="https://astrogeology.usgs.gov"+download[0]['src']
+        url_dict={'image_title':image_title, 'image_url':image_url}
         hemisphere_image_urls.append(url_dict)
     mars_dict={
-        "News Title": news_title,
-        "News Paragraph": news,
-        "Featured Image URL": featured_image_url,
-        "Fact Table": html_tbale,
-        "Hemisphere Images": hemisphere_image_urls
+        "news_title": news_title,
+        "news": news,
+        "featured_image_url": featured_image_url,
+        "html_table": html_table,
+        "hemisphere_image_urls": hemisphere_image_urls
     }
     browser.quit()
     return mars_dict

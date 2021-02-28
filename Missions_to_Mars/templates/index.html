@@ -21,13 +21,8 @@
 <div class="row">
   <div class="col-md-12">
     <h4>{{mars.news_title}}</h4>
-    <p>{{mars.news_p}}</p>
+    <p>{{mars.news}}</p>
   </div>
-</div>
-<div class="border">
-    </br>
-    <h5>Current Weather on Mars</h5>
-    {{mars.mars_weather}}
 </div>
 <hr>
 <div class="row">
@@ -40,8 +35,8 @@
     
     </br>
     <div class="card">
-      <h3>Mars Facts</h3>
-        {{ mars.fact_table | safe}}
+      <h2 class=""><u>Mars Facts</u></h2>
+        {{ mars.html_table | safe}}
     </div>
   </div>
 </div>
@@ -53,15 +48,14 @@
 </div>
 </br>
 <div class="row">       
-        {% for hem in mars.hemisphere_images %} 
+        {% for hem in mars.hemisphere_image_urls %} 
           <div class="col-6 border">
           </br>
+          <div>
+            <h3> {{hem.image_title}} </h3>  
+          </div>
                 <div>
                   <img width="512 px" height="512 px" src="{{hem.image_url}}">
-                </div>
-
-                <div>
-                  <h4> {{hem.title}} </h4>  
                 </div>
         
           </div>
