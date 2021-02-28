@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Templates 101</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -47,19 +47,20 @@
   </div>
 </div>
 </br>
-<div class="row">       
+<div class="row"> 
+  <div class="col-6 border">  
+    <div class="card"> 
+      <div class="card-body">  
+        <div>
         {% for hem in mars.hemisphere_image_urls %} 
-          <div class="col-6 border">
-          </br>
-          <div>
-            <h3> {{hem.image_title}} </h3>  
-          </div>
-                <div>
-                  <img width="512 px" height="512 px" src="{{hem.image_url}}">
-                </div>
-        
-          </div>
+          
+          <h3> {{hem.image_title}} </h3>  
+          <img width="500 px" height="500 px" src="{{hem.image_url}}">
+               
         {% endfor %}
+       </div>
+        </div>
+</div>
 </div> 
 
 <hr>
